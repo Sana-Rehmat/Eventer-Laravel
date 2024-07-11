@@ -24,7 +24,7 @@ class ReviewController extends Controller
             // 'order_id' => 'required',
             // 'service_provider_id' => 'required',
             'comment' => 'required|max:255',
-            
+
         ]);
         $review = new Review();
         $review->user_id = Auth::user()->id;
@@ -39,27 +39,27 @@ class ReviewController extends Controller
 
 
 
-        $response = Http::get('https://gentecbspro.com/MRVapora/CoreAPI/api/values/GetStockWarehousWise?Barcode=&WarsehouseCode=03');
-        
-        $json_res = json_decode($response, true);
-        // $all_data = [];
-        foreach ($json_res as $json) {
-            // return $json['name'];
-            $info = new Info;
-            $info->BarCode = $json['BarCode'];
-            $info->Quantity = $json['Quantity'];
-            $info->WarehouseCode = $json['WarehouseCode'];
-            $info->Item = $json['Item'];
-            $info->SalePrice =  $json['SalePrice'];
-            $info->NetSalePrice = $json['NetSalePrice'];
-            $info->DataEntryDate = substr($json["DataEntryDate"], 6, -2);
-            $info->DataEntryEditDateTime = $json['DataEntryEditDateTime'];
-            $info->save();
-           
-            );
-        }
-        
-        return view('info');
-    }
-    
+        // $response = Http::get('https://gentecbspro.com/MRVapora/CoreAPI/api/values/GetStockWarehousWise?Barcode=&WarsehouseCode=03');
+
+        // $json_res = json_decode($response, true);
+        // // $all_data = [];
+        // foreach ($json_res as $json) {
+        //     // return $json['name'];
+        //     $info = new Info;
+        //     $info->BarCode = $json['BarCode'];
+        //     $info->Quantity = $json['Quantity'];
+        //     $info->WarehouseCode = $json['WarehouseCode'];
+        //     $info->Item = $json['Item'];
+        //     $info->SalePrice =  $json['SalePrice'];
+        //     $info->NetSalePrice = $json['NetSalePrice'];
+        //     $info->DataEntryDate = substr($json["DataEntryDate"], 6, -2);
+        //     $info->DataEntryEditDateTime = $json['DataEntryEditDateTime'];
+        //     $info->save();
+
+        //     );
+        // }
+
+    //     return view('info');
+    // }
+
 }
